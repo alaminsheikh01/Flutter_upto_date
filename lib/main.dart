@@ -12,6 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
+  String _value = "Hello world";
+
+  void _onPressed() {
+    setState(() {
+      _value = "My name is Alamin";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +30,11 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32.0),
         child: Column(
           children: <Widget>[
-            Text('Add Widgets Here'),
+            Text(_value),
+            ElevatedButton(
+              onPressed: _onPressed,
+              child: Text("Click me"),
+            )
           ],
         ),
       ),
