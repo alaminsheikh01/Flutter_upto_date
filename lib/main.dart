@@ -12,11 +12,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
-  String _value = "Hello world";
+  int _value = 0;
 
-  void _onPressed() {
+  void _add() {
     setState(() {
-      _value = new DateTime.now().toString();
+      _value++;
+    });
+  }
+
+  void _subtract() {
+    setState(() {
+      _value--;
     });
   }
 
@@ -30,15 +36,11 @@ class _State extends State<MyApp> {
         padding: EdgeInsets.all(32.0),
         child: Column(
           children: <Widget>[
-            Text(_value),
-            ElevatedButton(
-              onPressed: _onPressed,
-              child: Text("Click me"),
+            Text(
+              'Value = ${_value}',
             ),
-            TextButton(
-              onPressed: _onPressed,
-              child: Text("Flat button"),
-            )
+            IconButton(icon: Icon(Icons.add), onPressed: _add),
+            IconButton(icon: Icon(Icons.remove), onPressed: _subtract),
           ],
         ),
       ),
