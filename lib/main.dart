@@ -12,19 +12,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
-  String _value = '';
+  String _value = 'Hello';
 
-  void _onChange(String value) {
-    setState(() {
-      _value = 'Change: ${value}';
-    });
-  }
+  bool _value1 = false;
+  bool _value2 = false;
 
-  void _onSubmit(String value) {
-    setState(() {
-      _value = 'Submit: ${value}';
-    });
-  }
+  void _onChanged1(bool value) => setState(() => _value1 = value);
+  void _onChanged2(bool value) => setState(() => _value2 = value);
 
   @override
   Widget build(BuildContext context) {
@@ -37,17 +31,17 @@ class _State extends State<MyApp> {
         child: Column(
           children: <Widget>[
             Text(_value),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'LabelText',
-                hintText: 'HintText',
-                icon: Icon(Icons.people),
+            Switch(value: _value1, onChanged: _onChanged1),
+            SwitchListTile(
+              value: _value2,
+              onChanged: _onChanged2,
+              title: Text(
+                "Hello world",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                ),
               ),
-              autocorrect: true,
-              autofocus: true,
-              keyboardType: TextInputType.number, // or we can use String also
-              onChanged: _onChange,
-              onSubmitted: _onSubmit,
             ),
           ],
         ),
