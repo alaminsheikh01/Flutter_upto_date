@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(new MaterialApp(
-    home: new MyApp(),
+  runApp(MaterialApp(
+    home: MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
   @override
-  _State createState() => new _State();
+  _State createState() => _State();
 }
 
 class _State extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Name here'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Name here'),
       ),
-      body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Column(
-          children: <Widget>[new Text('Add Widgets Here')],
+      body: Container(
+        padding: EdgeInsets.all(32.0),
+        child: Column(
+          children: <Widget>[
+            Text('Add Widgets Here'),
+          ],
         ),
       ),
     );
