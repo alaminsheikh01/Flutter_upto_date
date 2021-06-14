@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 void main() {
   runApp(MaterialApp(
@@ -12,8 +13,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _State extends State<MyApp> {
-  double _value = 0.0;
-  void _setValue(double value) => setState(() => _value = value);
+  String _value = '';
+  void _onClicked() => setState(() => _value = DateTime.now().toString());
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +22,17 @@ class _State extends State<MyApp> {
       appBar: AppBar(
         title: Text('Name here'),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _onClicked,
+        backgroundColor: Colors.red,
+        mini: false,
+        child: Icon(Icons.timer),
+      ),
       body: Container(
         padding: EdgeInsets.all(32.0),
         child: Column(
           children: <Widget>[
-            Text('Value: ${(_value * 100).round()}'),
-            Slider(value: _value, onChanged: _setValue)
+            Text(_value),
           ],
         ),
       ),
